@@ -48,7 +48,7 @@ def merge_dataframes(df_revenue, df_spend):
 
 def write_metrics_to_bigquery(algo_name, training_time, model_metrics):
     client = bigquery.Client()
-    table_id = "demy-mlops-428513.ml_ops.advertising_roi_model_metrics"
+    table_id = "udemy-mlops-428513.ml_ops.advertising_roi_model_metrics"
     table = bigquery.Table(table_id)
 
     row = {"algo_name": algo_name, "training_time": training_time.strftime('%Y-%m-%d %H:%M:%S'), "model_metrics": json.dumps(model_metrics)}
