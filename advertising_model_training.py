@@ -48,7 +48,7 @@ def merge_dataframes(df_revenue, df_spend):
 
 def write_metrics_to_bigquery(algo_name, training_time, model_metrics):
     client = bigquery.Client()
-    table_id = "udemy-mlops.ml_ops.advertising_roi_model_metrics"
+    table_id = "demy-mlops-428513.ml_ops.advertising_roi_model_metrics"
     table = bigquery.Table(table_id)
 
     row = {"algo_name": algo_name, "training_time": training_time.strftime('%Y-%m-%d %H:%M:%S'), "model_metrics": json.dumps(model_metrics)}
@@ -91,15 +91,15 @@ def evaluate_model(model, X_train, y_train, X_test, y_test):
 def save_model(model):
     artifact_name = 'model.joblib'
     dump(model,artifact_name)
-    model_artifact = bucket.blob('advertising_roi/artifact/'+artifact_name)
+    model_artifact = bucket.blob('artifact/'+artifact_name)
     model_artifact.upload_from_filename(artifact_name)
 
 def main():
 
-    campaign_file_path = "gs://sid-ml-ops/advertising_roi/campaign_spend.csv"
+    campaign_file_path = "gs://sid-ml-ops/campaign_spend.csv"
     df_spend = read_campaign_data(campaign_file_path)
 
-    revenue_file_path = "gs://sid-ml-ops/advertising_roi/monthly_revenue.csv"
+    revenue_file_path = "gs://sid-ml-ops/monthly_revenue.csv"
     df_revenue_per_month = calculate_revenue_per_month(revenue_file_path)
 
     df_spend_per_month = calculate_spend_per_month(df_spend)
