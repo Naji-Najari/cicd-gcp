@@ -46,3 +46,5 @@ steps:
   - '-c'
   - |
     gcloud beta ai endpoints deploy-model $(cat /workspace/endpoint_id.txt) --region=us-central1 --model=$(cat /workspace/model_id.txt) --display-name=bikeshare-model-endpoint --traffic-split=0=100 --machine-type=n1-standard-1
+options:
+  logging: CLOUD_LOGGING_ONLY
