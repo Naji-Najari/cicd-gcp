@@ -10,7 +10,7 @@ import sys
 
 storage_client = storage.Client()
 bucket = storage_client.bucket("sid-vertex-mlops")
-
+  
 def load_data(filename):
     df = pd.read_csv(filename)
     return df
