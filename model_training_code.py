@@ -7,7 +7,7 @@ from google.cloud import storage
 from joblib import dump
 from sklearn.pipeline import make_pipeline
 import sys
-
+  
 storage_client = storage.Client()
 bucket = storage_client.bucket("sid-vertex-mlops")
   
